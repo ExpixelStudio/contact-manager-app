@@ -1,12 +1,12 @@
 import user from '../assets/user.png';
 
 function ContactCard(props){
-    const {id, name, email} = props.contact;
+    const {id, name, email} = props.contact; //contactlist.jsx
     console.log(name)
 
     return (
         <div className="item">
-                <img src={user} alt="" className="ui avatar image" />
+                <img src={user} alt="user" className="ui avatar image" />
                 <div className="content">
                     <div className="header">{name}</div>
                     <div>{email}</div>
