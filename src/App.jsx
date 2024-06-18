@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { BrowserRouter as Router , Routes, Route } from 'react-router-dom';
 
 
 import Header from './components/Header';
@@ -54,9 +55,25 @@ function App() {
 
   return (
     <div className='ui container'>
-      <Header />
-      <AddContact addContactHandler={addContactHandler}/>
-      <ContactList contacts={contacts} getContactId={removeContactHandler}/>
+      {/* <Switch> is replaced by <Routes> in ReactRouter v6 */}
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element = { <ContactList contacts={contacts} getContactId={removeContactHandler} /> } />
+          
+          <Route 
+            path="/add" 
+            element= {<AddContact addContactHandler={addContactHandler} /> 
+            } 
+          />
+          
+        </Routes>
+        
+      </Router>
+
+       {/* <AddContact addContactHandler={addContactHandler}/> */}
+        {/* <ContactList contacts={contacts} getContactId={removeContactHandler}/> */}
+      
     </div>
   );
 }

@@ -14,7 +14,8 @@ class AddContact extends React.Component {
         }
         this.props.addContactHandler(this.state); //recieve data from fucntion of same name in app.js (child)
         this.setState({name:'', email:''});
-        /* console.log(this.state); */
+        /* this.props.history.push('/');
+        console.log(this.props); */ //TODO working on this trash
     }
 
    /*  function submitHandler(){
