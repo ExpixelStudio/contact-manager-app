@@ -1,6 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+    
 
-class AddContact extends React.Component {
+function AddContactWithNavigate(props) {
+    const navigate = useNavigate();
+    return <AddContact {...props} navigate={navigate} />;
+}
+
+
+class AddContact extends React.Component { //TODO Might rewrite this class as a function
+
+    
+
     state = {
         name:'',
         email:'',
@@ -14,8 +25,7 @@ class AddContact extends React.Component {
         }
         this.props.addContactHandler(this.state); //recieve data from fucntion of same name in app.js (child)
         this.setState({name:'', email:''});
-        /* this.props.history.push('/');
-        console.log(this.props); */ //TODO working on this trash
+        this.props.navigate('/');
     }
 
    /*  function submitHandler(){
@@ -39,6 +49,7 @@ class AddContact extends React.Component {
                         placeholder="Name" 
                         value={this.state.name}
                         onChange={(e) => this.setState({name: e.target.value})}
+                        
                     />
                 </div>
 
@@ -53,10 +64,13 @@ class AddContact extends React.Component {
                     />
                 </div>
 
-                <button className="ui button blue">Add</button>
+                <button className="ui button blue" 
+        
+                        >Add
+                        </button>
             </form>
         </div>
     );
 }
 }
-export default AddContact;
+export default AddContactWithNavigate; // also returns the AddContact class and its props
