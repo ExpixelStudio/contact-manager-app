@@ -1,4 +1,5 @@
 import user from '../assets/user.png';
+import { Link } from 'react-router-dom';
 /* import { v4 as uuidv4 } from 'uuid'; */
 
 function ContactCard(props){
@@ -9,8 +10,11 @@ function ContactCard(props){
         <div className="item">
                 <img src={user} alt="user" className="ui avatar image" />
                 <div className="content">
-                    <div className="header">{name}</div>
-                    <div>{email}</div>
+                    <Link to = {`/contact/${id}`}>
+                        <div className="header">{name}</div>
+                        <div>{email}</div>
+                    </Link>
+                    
                 </div>
                 <i 
                     className="trash alternate outline icon"

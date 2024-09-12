@@ -9,13 +9,13 @@ function ContactList(props){
         console.log(`removed ID:${id}`)
     }
 
-    const contacts = [
+   /*  const contacts = [
         {
             id : '1',
             name : 'battlepower',
             email : 'pixelgame@gmail.com',
         },
-    ];
+    ]; */
 
     
 

@@ -6,6 +6,7 @@ import { BrowserRouter as Router , Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import ContactList from './components/ContactList';
 import AddContact from './components/AddContact';
+import ContactDetails from './components/ContactDetails';
 
 
 function App() {
@@ -65,6 +66,11 @@ function App() {
             path="/add" 
             element= {<AddContact addContactHandler={addContactHandler} /> 
             } 
+          />
+
+          <Route
+            path="/contact/:id" // :propname ,colon followed by prop name refrences the prop.
+            element ={<ContactDetails/>}
           />
           
         </Routes>

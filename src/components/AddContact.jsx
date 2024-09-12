@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function AddContactWithNavigate(props) {
     const navigate = useNavigate();
-    return <AddContact {...props} navigate={navigate} />;
+    return <AddContact {...props} navigate={navigate} />; //navigate is the navigate prop from the AddContact class this.props.navigate line.
 }
 
 
