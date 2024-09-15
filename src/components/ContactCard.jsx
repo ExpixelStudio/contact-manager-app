@@ -1,8 +1,10 @@
 import user from '../assets/user.png';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 /* import { v4 as uuidv4 } from 'uuid'; */
 
 function ContactCard(props){
+
     const {id, name, email} = props.contact; //contactlist.jsx
     console.log(name)
 
@@ -10,7 +12,7 @@ function ContactCard(props){
         <div className="item">
                 <img src={user} alt="user" className="ui avatar image" />
                 <div className="content">
-                    <Link to = {`/contact/${id}`}>
+                    <Link to = {`/contact/${id}`} state={{ contact: props.contact }}> {/*state can pass prop data to linked component https://ui.dev/react-router-pass-props-to-link */}
                         <div className="header">{name}</div>
                         <div>{email}</div>
                     </Link>

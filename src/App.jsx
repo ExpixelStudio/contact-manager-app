@@ -70,7 +70,7 @@ function App() {
 
           <Route
             path="/contact/:id" // :propname ,colon followed by prop name refrences the prop.
-            element ={<ContactDetails/>}
+            element ={<ContactDetails />}
           />
           
         </Routes>
