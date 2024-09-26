@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter as Router , Routes, Route } from 'react-router-dom';
-import api from '../api/contacts';
+import api from '../api/contacts'; 
 
 import Header from './components/Header';
 import ContactList from './components/ContactList';
@@ -37,7 +37,8 @@ function App() {
     setContacts([...contacts,response.data]);
   } 
 
-  const removeContactHandler = (id) => {
+  const removeContactHandler = async (id) => {
+    await api.delete(`/contacts/${id}`);
     const newContactList = contacts.filter((contact)=>{
       return contact.id != id;
     });
