@@ -39,7 +39,11 @@ function App() {
   const updateContactHandler = async (contact) => {
     const response = await api.put(`/contacts/${contact.id}`, contact)
     console.log(response.data);
-  }
+    const {id,name,email} = response.data;
+    setContacts(contacts.map(contact => { //update state for immediate showing of edited data.
+      return contact.id === id ? {...response.data} : contact; // contact.id === id of existing data update else return as it was.
+    }));
+  };
 
   const removeContactHandler = async (id) => {
     await api.delete(`/contacts/${id}`);
