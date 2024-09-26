@@ -1,0 +1,29 @@
+{
+  "contacts": [
+    {
+      "id": "79d594cf-b4a9-430c-add7-004bb7aa38b5",
+      "name": "Elitemob",
+      "email": "elite@gmail.com"
+    },
+    {
+      "id": "b88cb570-9d4d-4708-8b55-e4fbec42275b",
+      "name": "Namu",
+      "email": "gtlegend_269@hotmail.com"
+    },
+    {
+      "id": "9177c81c-7c8c-4eb2-90ad-ef3e85f7e6ce",
+      "name": "doublexp",
+      "email": "double@gmail.com"
+    },
+    {
+      "id": "16541d7c-6090-4113-8932-74190b910837",
+      "name": "Rank1",
+      "email": "ranker@hotmail.com"
+    },
+    {
+      "id": "f7e5f3b8-d139-4b0f-964c-114f763543b3",
+      "name": "tim",
+      "email": "gg"
+    }
+  ]
+}

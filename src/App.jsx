@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserRouter as Router , Routes, Route } from 'react-router-dom';
-
+import api from '../api/contacts';
 
 import Header from './components/Header';
 import ContactList from './components/ContactList';
@@ -15,9 +15,26 @@ function App() {
 
   const[contacts, setContacts] = useState([]); //could also initilize with storedContacts but that results in undesired empty contact card in this particular design.
 
-  const addContactHandler = (contact) => {
+  //RetrieveContacts
+  const retrieveContacts = async () => {
+    const response = await api.get("/contacts");
+    return response.data;
+  };
+
+  
+
+
+  const addContactHandler = async (contact) => {
     console.log(contact);
-    setContacts([...contacts,{id: uuidv4(), ...contact}]);
+    const request = {
+      id: uuidv4(),
+      ...contact
+    }
+
+    
+    const response = await api.post('/contacts', request)
+    console.log(response);
+    setContacts([...contacts,response.data]);
   } 
 
   const removeContactHandler = (id) => {
@@ -29,10 +46,17 @@ function App() {
   }
 
 
-  console.log(uuidv4());
+  //console.log(uuidv4());
   
   useEffect(() => {
-    if(storedContacts) setContacts(storedContacts);
+    /* if(storedContacts) setContacts(storedContacts); */
+
+    const getAllContacts = async () => {
+      const allContacts = await retrieveContacts();
+      if (allContacts) setContacts(allContacts);
+    };
+
+    getAllContacts();
   },[]); // Empty dependency array means this effect runs only once after initial render
 
 
