@@ -20,10 +20,17 @@ function ContactCard(props){
                 </div>
                 <i 
                     className="trash alternate outline icon"
-                        style={{color:'red', marginTop:'7px'}} 
+                        style={{color:'red', marginTop:'7px', marginLeft:'10px'}} 
                     onClick={() => props.clickHandler(id)} >
                 </i>
-                
+
+                <Link to = {'/edit'} state={{ contact: props.contact }}> {/*state can pass prop data to linked component https://ui.dev/react-router-pass-props-to-link */}
+                    <i 
+                        className="edit alternate outline icon"
+                            style={{color:'blue', marginTop:'7px'}} 
+                    >
+                    </i>
+                </Link>
             </div>
     );
 };

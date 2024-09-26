@@ -6,6 +6,7 @@ import api from '../api/contacts';
 import Header from './components/Header';
 import ContactList from './components/ContactList';
 import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
 import ContactDetails from './components/ContactDetails';
 
 
@@ -30,12 +31,15 @@ function App() {
       id: uuidv4(),
       ...contact
     }
-
-    
     const response = await api.post('/contacts', request)
     console.log(response);
     setContacts([...contacts,response.data]);
   } 
+
+  const updateContactHandler = async (contact) => {
+    const response = await api.put(`/contacts/${contact.id}`, contact)
+    console.log(response.data);
+  }
 
   const removeContactHandler = async (id) => {
     await api.delete(`/contacts/${id}`);
@@ -96,6 +100,12 @@ function App() {
           <Route
             path="/contact/:id" // :propname ,colon followed by prop name refrences the prop.
             element ={<ContactDetails />}
+          />
+
+          <Route 
+            path="/edit" 
+            element= {<EditContact updateContactHandler={updateContactHandler} /> 
+            } 
           />
           
         </Routes>
