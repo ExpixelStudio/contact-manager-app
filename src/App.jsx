@@ -15,7 +15,8 @@ function App() {
   const storedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
   const[contacts, setContacts] = useState([]); //could also initilize with storedContacts but that results in undesired empty contact card in this particular design.
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   //RetrieveContacts
   const retrieveContacts = async () => {
     const response = await api.get("/contacts");
@@ -55,6 +56,18 @@ function App() {
   }
 
 
+  const searchHandler = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    if (searchTerm !== '') {
+      const newContactList = contacts.filter((contact)=>{
+          return Object.values(contact).join(' ').toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      setSearchResults(newContactList);
+    } else {
+      setSearchResults(contacts);
+    }
+  };
+
   //console.log(uuidv4());
   
   useEffect(() => {
@@ -93,7 +106,15 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element = { <ContactList contacts={contacts} getContactId={removeContactHandler} /> } />
+          <Route path="/" 
+          element = { 
+            <ContactList 
+            contacts={searchTerm.length < 1 ? contacts : searchResults} //if length < 1 (nothing typed) return contacts else return search results
+            getContactId={removeContactHandler} 
+            term={searchTerm}
+            searchKeyWord = {searchHandler}
+
+          /> } />
           
           <Route 
             path="/add" 
