@@ -35,6 +35,12 @@ function ContactList(props){
                 <button className='ui button blue right'>Add Contact</button> 
             </Link>
             
+            <div className="ui search">
+                <div className="ui icon input">
+                    <input type="text" placeholder="Search Contacts" className="prompt"/>
+                    <i className="search icon"></i>
+                </div>
+            </div>
         
             <div className="ui celled list">
                 {renderContactList}
